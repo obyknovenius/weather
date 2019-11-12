@@ -1,0 +1,7 @@
+data/com.obyknovenius.Weather.desktop.in
+data/com.obyknovenius.Weather.appdata.xml.in
+data/com.obyknovenius.Weather.gschema.xml
+src/weather-window.ui
+src/main.c
+src/weather-window.c
+

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/obyknovenius/Weather">
+    <file>weather-window.ui</file>
+    <file>weather-hour.ui</file>
+  </gresource>
+</gresources>
