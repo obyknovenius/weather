@@ -24,7 +24,14 @@
 static void
 on_activate (GtkApplication *app)
 {
+  GdkScreen *screen;
+  GtkCssProvider *provider;
 	GtkWindow *window;
+
+  screen = gdk_screen_get_default ();
+  provider = gtk_css_provider_new ();
+  gtk_css_provider_load_from_resource (provider, "/com/obyknovenius/Weather/application.css");
+  gtk_style_context_add_provider_for_screen (screen, GTK_STYLE_PROVIDER (provider), GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
 	/* It's good practice to check your parameters at the beginning of the
 	 * function. It helps catch errors early and in development instead of
