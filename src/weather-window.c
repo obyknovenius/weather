@@ -32,33 +32,33 @@ G_DEFINE_TYPE (WeatherWindow, weather_window, GTK_TYPE_APPLICATION_WINDOW)
 
 gboolean draw(GtkWidget *widget, cairo_t *cr, gpointer data)
 {
-  guint width, height;
-  guint top_padding = 80, bottom_padding = 40;
+  int n = 10;
+  float temp[] = {0.2, 0.5, 0.5, 0.3, 0.3, 0.4, 0.7, 0.7, 0.5, 0.4};
 
-  width = gtk_widget_get_allocated_width (widget);
-  height = gtk_widget_get_allocated_height (widget);
+  int width = gtk_widget_get_allocated_width (widget);
+  int height = gtk_widget_get_allocated_height (widget);
 
-  cairo_set_source_rgb(cr, 209.0 / 255.0, 148.0 / 255.0, 12.0 / 255.0);
-  cairo_set_line_width(cr, 4);
+  int top_padding = 80;
+  int bottom_padding = 40;
 
-  cairo_move_to(cr, 0, top_padding + ((1 - 0.2) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.1 * width - 40, top_padding + ((1 - 0.2) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.2 * width - 40, top_padding + ((1 - 0.5) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.3 * width - 40, top_padding + ((1 - 0.5) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.4 * width - 40, top_padding + ((1 - 0.3) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.5 * width - 40, top_padding + ((1 - 0.3) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.6 * width - 40, top_padding + ((1 - 0.4) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.7 * width - 40, top_padding + ((1 - 0.7) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.8 * width - 40, top_padding + ((1 - 0.7) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, 0.9 * width - 40, top_padding + ((1 - 0.4) * (height - top_padding - bottom_padding)));
-  cairo_line_to(cr, width, top_padding+ ((1 - 0.4) * (height - top_padding)));
+  int canvas_height = height - top_padding - bottom_padding;
+  int step = (width - (n - 1)) / n;
+
+  cairo_set_source_rgb (cr, 209.0 / 255.0, 148.0 / 255.0, 12.0 / 255.0);
+  cairo_set_line_width (cr, 4);
+
+  cairo_move_to (cr, 0, top_padding + ((1 - temp[0]) * canvas_height));
+  for (int i = 0; i < n; i++) {
+    cairo_line_to (cr,  (i * step) + step / 2, top_padding + ((1 - temp[i]) * canvas_height));
+  }
+  cairo_line_to (cr, width, top_padding + ((1 - temp[n - 1]) * canvas_height));
   cairo_stroke_preserve (cr);
 
-  cairo_line_to(cr, width, height);
-  cairo_line_to(cr, 0, height);
+  cairo_line_to (cr, width, height);
+  cairo_line_to (cr, 0, height);
 
-  cairo_set_source_rgb(cr, 238.0 / 255.0, 214.0 / 255.0, 127.0 / 255.0);
-  cairo_fill(cr);
+  cairo_set_source_rgb (cr, 238.0 / 255.0, 214.0 / 255.0, 127.0 / 255.0);
+  cairo_fill (cr);
 
   return FALSE;
 }
