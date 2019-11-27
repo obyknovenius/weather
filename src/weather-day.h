@@ -1,6 +1,6 @@
-/* weather-hour.c
+/* weather-day.h
  *
- * Copyright 2019 Vitaly Dyackhov
+ * Copyright 2019 Vitaly Dyachkov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,26 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "weather-hour.h"
+#pragma once
 
-struct _WeatherHour
-{
-  GtkBox parent_instance;
-};
+#include <gtk/gtk.h>
 
-G_DEFINE_TYPE (WeatherHour, weather_hour, GTK_TYPE_BOX)
+G_BEGIN_DECLS
 
-static void
-weather_hour_class_init (WeatherHourClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+#define WEATHER_TYPE_DAY (weather_day_get_type())
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/com/obyknovenius/Weather/weather-hour.ui");
-  gtk_widget_class_set_css_name (widget_class, "hour");
-}
+G_DECLARE_FINAL_TYPE (WeatherDay, weather_day, WEATHER, DAY, GtkBox)
 
-static void
-weather_hour_init (WeatherHour *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
-}
+G_END_DECLS

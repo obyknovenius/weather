@@ -3,6 +3,7 @@
   <gresource prefix="/com/obyknovenius/Weather">
     <file>weather-window.ui</file>
     <file>weather-hour.ui</file>
+    <file>weather-day.ui</file>
     <file>application.css</file>
   </gresource>
 </gresources>

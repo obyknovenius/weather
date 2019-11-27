@@ -2,6 +2,7 @@ weather_sources = [
   'main.c',
   'weather-window.c',
   'weather-hour.c',
+  'weather-day.c',
 ]
 
 weather_deps = [
