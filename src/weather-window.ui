@@ -226,6 +226,7 @@
                             <property name="shadow_type">in</property>
                             <child>
                               <object class="GtkStack" id="forecast-stack">
+                                <property name="name">forecast-stack</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <child>
