@@ -1,3 +1,7 @@
+scrollbar {
+  opacity: 0;
+}
+
 #forecast-stack {
   background-color: white;
 }
